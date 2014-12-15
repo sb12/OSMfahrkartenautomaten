@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="http://necolas.github.io/normalize.css/2.1.3/normalize.css" />
+		<style type="text/css">
+			body {width: 600px; margin: auto;}
+		</style>
+	</head>
+	<body>
+		<h1>Fahrkartenautomatenauswertung Karlsruher Verkehrsverbund</h1>
+		<p><a href="http://www.ka-news.de/region/karlsruhe/Karlsruhe~/KVV-Preiserhoehung-Darum-zahlen-auch-Karlsruher-Autofahrer;art6066,1537614">Der KVV hat in der Umgebung von Karlsruhe wohl 130 stationäre Fahrkartenautomaten</a>. Hier eine Auswertung über die OverpassAPI. Gezählt werden alle Fahrkartenautomaten mit "operator=Karlsruher Verkehrsverbund" oder "operator=KVV".</p>
+		
+		<p><a href="./index.html#12/49.0143/8.3819">Die Karte mit den Automaten gibts hier</a></p>
+		<h2>Auswertung</h2>
+		<div id="auswertung">
+			Abfrage läuft...
+		</div>
+	</body>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+
+		function auswertung(anzahl){
+			$('#auswertung').html(anzahl + " von 130 KVV-Automaten");
+		}
+
+		function parseOSM(data){
+			counter = 0;
+			KVV_operator = ['kvv', 'karlsruher verkehrsverbund'];
+
+			$(data).find('node').each(function(){
+				$(this).find('tag').each(function(){
+					if($(this).attr("k")=="operator")
+						
+						var lowerOperator = $(this).attr("v").toLowerCase();
+						if (KVV_operator.indexOf(lowerOperator)>-1) counter++;
+						
+				});
+			});
+			auswertung(counter);
+		}
+
+
+
+		XMLRequestText = '( node ["vending"="public_transport_tickets"] ( 48.5,8.1,49.2,9.2 ); >; ); out;';
+					
+					
+		//URL Codieren
+		XMLRequestText = encodeURIComponent(XMLRequestText);
+		
+		RequestURL = "http://overpass-api.de/api/interpreter?data=" + XMLRequestText;
+		//AJAX REQUEST
+		
+		
+		$.ajax({
+		url: RequestURL,
+		type: 'GET',
+		crossDomain: true,
+		success: function(data){parseOSM(data);}
+		//beforeSend: setHeader
+		});	
+	</script>
+</html>

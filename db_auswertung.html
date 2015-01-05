@@ -10,10 +10,10 @@
 		</style>
 	</head>
 	<body>
-		<h1>Fahrkartenautomatenauswertung Karlsruher Verkehrsverbund</h1>
-		<p><a href="http://www.ka-news.de/region/karlsruhe/Karlsruhe~/KVV-Preiserhoehung-Darum-zahlen-auch-Karlsruher-Autofahrer;art6066,1537614">Der KVV hat in der Umgebung von Karlsruhe wohl 130 stationäre Fahrkartenautomaten</a>. Hier eine Auswertung über die OverpassAPI. Gezählt werden alle Fahrkartenautomaten mit "operator=Karlsruher Verkehrsverbund" oder "operator=KVV".</p>
-		
-		<p><a href="./index.html#12/49.0143/8.3819">Die Karte mit den Automaten gibts hier</a></p>
+		<h1>Fahrkartenautomatenauswertung Deutsche Bahn</h1>
+		<p>Es gibt wohl <a href="http://www.db-vertrieb.com/db_vertrieb/view/leistungen/vertriebskanaele/automat.shtml">ca. 7000 Automaten der Deutschen Bahn</a></p>
+		<p>Hier eine Auswertung aller Automaten der Deutschen Bahn über die OverpassAPI. Gezählt werden alle Fahrkartenautomaten mit operator="Deutsche Bahn", "Deutsche Bahn AG","DB","DB AG", "DB Bahn", "DBAG", "DB Regio AG", "DB Regio", "DB Station&Service", "DB Station&Service AG", "Deutsche Bahn (DB)", "DB Vertrieb" und "DB Vertrieb GmbH".</p>
+		<p><a href="./">Die Karte mit den Automaten gibts hier</a></p>
 		<h2>Auswertung</h2>
 		<div id="auswertung">
 			Abfrage läuft...
@@ -23,19 +23,19 @@
 	<script>
 
 		function auswertung(anzahl){
-			$('#auswertung').html(anzahl + " von 130 KVV-Automaten");
+			$('#auswertung').html("Zur Zeit sind "+anzahl + " von ca. 7000 Automaten der Deutschen Bahn erfasst.");
 		}
 
 		function parseOSM(data){
 			counter = 0;
-			KVV_operator = ['kvv', 'karlsruher verkehrsverbund'];
+			DB_operator = ['deutsche bahn', 'deutsche bahn ag', 'db', 'db ag', 'db bahn', 'dbag', 'db regio ag', 'db regio', 'db station&service', 'db station & service', 'db station&service ag', 'deutsche bahn (db)', 'db vertrieb', 'db vertrieb gmbh'];
 
 			$(data).find('node').each(function(){
 				$(this).find('tag').each(function(){
 					if($(this).attr("k")=="operator")
 						
 						var lowerOperator = $(this).attr("v").toLowerCase();
-						if (KVV_operator.indexOf(lowerOperator)>-1) counter++;
+						if (DB_operator.indexOf(lowerOperator)>-1) counter++;
 						
 				});
 			});
@@ -44,7 +44,7 @@
 
 
 
-		XMLRequestText = '( node ["vending"="public_transport_tickets"] ( 48.5,7.8,49.3,9.2 ); >; ); out;';
+		XMLRequestText = '( node ["vending"="public_transport_tickets"] ( 47.0,5.0,55.0,15.5 ); >; ); out;';
 					
 					
 		//URL Codieren

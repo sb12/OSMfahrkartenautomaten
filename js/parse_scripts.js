@@ -59,6 +59,7 @@ function preparseOperatorName(operator){
 	var metronom = ['metronom', 'metronom eisenbahngesellschaft', 'metronom eisenbahngesellschaft mbh'];
 	var westfalenbahn = ['westfalenbahn', 'westfalenbahn gmbh'];
 	var nordwestbahn = ['nordwestbahn', 'nordwestbahn gmbh'];
+	var vlexx = ['vlexx', 'vlexx gmbh'];
 
 	if (DeutscheBahn.indexOf(operator)>-1) result = 'deutsche bahn';
 	if (DVB_to_fix.indexOf(operator)>-1) result = 'DVB_to_fix';
@@ -77,6 +78,7 @@ function preparseOperatorName(operator){
 	if (metronom.indexOf(operator)>-1) result = 'metronom';
 	if (westfalenbahn.indexOf(operator)>-1) result = 'westfalenbahn';
 	if (nordwestbahn.indexOf(operator)>-1) result = 'nordwestbahn';
+	if (vlexx.indexOf(operator)>-1) result = 'vlexx';
 
 	return result;
 }
@@ -101,6 +103,7 @@ function getMarkerIcon(parsedOperator){
 	if (parsedOperator == "metronom") result = metronomicon;
 	if (parsedOperator == "westfalenbahn") result = westfalenbahnicon;
 	if (parsedOperator == "nordwestbahn") result = nordwestbahnicon;
+	if (parsedOperator == "vlexx") result = vlexxicon;
 
 	return result;
 }

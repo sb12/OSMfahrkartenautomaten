@@ -60,6 +60,7 @@ function preparseOperatorName(operator){
 	var westfalenbahn = ['westfalenbahn', 'westfalenbahn gmbh'];
 	var nordwestbahn = ['nordwestbahn', 'nordwestbahn gmbh'];
 	var vlexx = ['vlexx', 'vlexx gmbh'];
+	var SWU = ['swu', 'swu verkehr'];
 
 	if (DeutscheBahn.indexOf(operator)>-1) result = 'deutsche bahn';
 	if (DVB_to_fix.indexOf(operator)>-1) result = 'DVB_to_fix';
@@ -79,6 +80,7 @@ function preparseOperatorName(operator){
 	if (westfalenbahn.indexOf(operator)>-1) result = 'westfalenbahn';
 	if (nordwestbahn.indexOf(operator)>-1) result = 'nordwestbahn';
 	if (vlexx.indexOf(operator)>-1) result = 'vlexx';
+	if (SWU.indexOf(operator)>-1) result = 'SWU';
 
 	return result;
 }
@@ -104,6 +106,7 @@ function getMarkerIcon(parsedOperator){
 	if (parsedOperator == "westfalenbahn") result = westfalenbahnicon;
 	if (parsedOperator == "nordwestbahn") result = nordwestbahnicon;
 	if (parsedOperator == "vlexx") result = vlexxicon;
+	if (parsedOperator == "SWU") result = SWUicon;
 
 	return result;
 }

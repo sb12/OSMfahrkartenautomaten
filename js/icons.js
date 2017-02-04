@@ -139,6 +139,36 @@ var hamburghochbahnicon = L.icon({
 	shadowSize: [41, 41]
 });
 
+var metronomicon = L.icon({
+	iconUrl: './img/operator/metronom.png',
+	iconRetinaUrl: './img/operator/metronom@2x.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowUrl: './leaflet/images/marker-shadow.png',
+	shadowSize: [41, 41]
+});
+
+var westfalenbahnicon = L.icon({
+	iconUrl: './img/operator/westfalenbahn.png',
+	iconRetinaUrl: './img/operator/westfalenbahn@2x.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowUrl: './leaflet/images/marker-shadow.png',
+	shadowSize: [41, 41]
+});
+
+var nordwestbahnicon = L.icon({
+	iconUrl: './img/operator/nordwestbahn.png',
+	iconRetinaUrl: './img/operator/nordwestbahn@2x.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowUrl: './leaflet/images/marker-shadow.png',
+	shadowSize: [41, 41]
+});
+
 
 var StdUnknown = L.icon({
 	iconUrl: './img/operator/unknown.png',
